@@ -1,0 +1,14 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -15px;
+
+}
+.item {
+ width: 45vw;
+}
+.gallery li {
+  list-style: none;
+  margin: 15px;
+}
+
