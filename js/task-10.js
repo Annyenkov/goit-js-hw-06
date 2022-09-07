@@ -27,8 +27,7 @@ function onDivAddEl(event) {
   refs.divToCreate.append(...divEl);
 }
 function destroyBoxes(event) {
-  const newDiv = refs.divToCreate.querySelector('div')
-  refs.divToCreate.removeChild(newDiv);
+  refs.divToCreate.innerHTML = '';
 }
 
 btnCreate.addEventListener('click', onDivAddEl)
