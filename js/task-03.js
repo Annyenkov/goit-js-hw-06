@@ -12,17 +12,11 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
-const galleryEl = document.querySelector('.gallery')
-galleryEl.insertAdjacentHTML('afterbegin', '<li><img></img></li><li><img></img></li><li><img></img></li>')
-const allImg = document.querySelectorAll('.gallery img');
-for (let i = 0; i < images.length; i += 1) {
-  allImg[i].alt = images[i].alt
-  allImg[i].src = images[i].url
-  allImg[i].classList = 'item'
-}
 
-
-
-
-
-
+const listRef = document.querySelector('.gallery');
+const makeGalerryEL = (image) => {
+  const { url, alt } = image;
+  return `<li class ='item'><img src = '${url}' alt = '${alt}' width ='500'/> </li>`;
+};
+const makeGallerryList = images.map(makeGalerryEL).join('');
+listRef.insertAdjacentHTML('beforeend', makeGallerryList);
