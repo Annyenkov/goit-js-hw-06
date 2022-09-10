@@ -1,12 +1,31 @@
-const refs = {
-  input: document.querySelector('input'),
+const inputEl = document.querySelector("#validation-input");
 
-}
-const inputLength = refs.input.attributes[2].value;
-refs.input.addEventListener('blur', onInputChange)
-function onInputChange(event) {
-  const inputValue = event.currentTarget.value;
-  inputValue.length > inputLength
-    ? refs.input.classList = 'invalid'
-    : refs.input.classList = 'valid'  
-}
+const ValidOrInvalid = () => {
+  inputEl.value.length === Number(inputEl.getAttribute("data-length"))
+    ? addValidOrInvalid(true)
+    : addValidOrInvalid(false);
+};
+
+const addValidOrInvalid = (isValid) => {
+  if (isValid === true) {
+    if (
+      !inputEl.hasAttribute("class") ||
+      !inputEl.classList.contains("invalid")
+    ) {
+      inputEl.classList.add("valid");
+    } else {
+      inputEl.classList.replace("invalid", "valid");
+    }
+  } else {
+    if (
+      !inputEl.hasAttribute("class") ||
+      !inputEl.classList.contains("valid")
+    ) {
+      inputEl.classList.add("invalid");
+    } else {
+      inputEl.classList.replace("valid", "invalid");
+    }
+  }
+};
+
+inputEl.addEventListener("blur", ValidOrInvalid);
